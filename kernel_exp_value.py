@@ -29,7 +29,7 @@ bse_kernel = bse_kernel.T # bring lower triangular to upper triangular
 lower_idx = np.tril_indices(n =bse_kernel.shape[0],m =bse_kernel.shape[1]) # This gets all the lower tri. indices
 bse_kernel[lower_idx[0],lower_idx[1]] = np.conj(bse_kernel[lower_idx[1],lower_idx[0]]) # Assigning them to conj of upper tri.
 
-exp_val = np.einsum('si,ij,sj->s',np.conj(bse_wfn),bse_kernel,bse_wfn) * 27.2114 # einsum to get the exp. value
+exp_val = np.einsum('si,ij,sj->s',np.conj(bse_wfn),bse_kernel,bse_wfn,optimize=True) * 27.2114 # einsum to get the exp. value
 # Above, s: index of exciton, i and j are "k,c,v" indices, also we multiply with Hartree to eV constant
 # Typicaly, the kcv order is not the same for eigenstate and the kernel 
 # but we can get away without worrying about it here since we haven't used symmetries at all
