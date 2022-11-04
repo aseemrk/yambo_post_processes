@@ -3,7 +3,7 @@
 # with BSE kernel set to hartree
 
 
-# Warning: don't use symmetries 
+# Warning: don't use symmetries, use parallel HDF5 io in Yambo
 
 import numpy as np
 import netCDF4 as nc
